@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cmd-shell-lab"
+version = "0.1.0"
+description = "Boilerplate for experimenting with terminal hooks and CLI patterns"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Shravan" }]
+dependencies = []
+
+[project.scripts]
+cmd-shell-lab = "cmd_shell_lab.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cmd_shell_lab*"]
+
+[tool.setuptools.package-data]
+"cmd_shell_lab.data" = ["*.json"]
