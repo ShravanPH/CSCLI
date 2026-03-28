@@ -1,2 +1,0 @@
-[console_scripts]
-cmd-case-open = cmd_case_open.cli.main:main
