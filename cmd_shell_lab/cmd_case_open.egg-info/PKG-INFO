@@ -1,3 +1,11 @@
+Metadata-Version: 2.4
+Name: cmd-case-open
+Version: 0.1.0
+Summary: CLI for terminal case opening experiments
+Author: Shravan
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
 # cmd_case_open
 
 CLI for terminal case-opening experiments.
