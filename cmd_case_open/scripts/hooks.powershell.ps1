@@ -16,17 +16,18 @@ if (-not $global:CMD_CASE_OPEN_HOOKS_READY) {
   }
 
   function global:Invoke-CmdCaseOpenTease {
-    try {
-      $teaseLine = "[=={*}==>] Run: case-reveal | PS: case-reveal stats"
-      $tte = Get-Command tte -ErrorAction SilentlyContinue
-      if ($tte) {
-        $teaseLine | tte --frame-rate 30 --canvas-width 0 --existing-color-handling ignore colorshift --gradient-steps 4 --gradient-frames 1 --cycles 1 --no-loop | Out-Host
-      } else {
-        Write-Host $teaseLine
-      }
-    } catch {
-      Write-Host "[=={*}==>] Run: case-reveal | PS: case-reveal stats"
-    }
+    $teaseMessages = @(
+    "A rare terminal drop is waiting: "
+    "Loot signal detected: "
+    "Your next pull is queued: "
+    "Hidden reward armed: "
+    )
+
+    # Pick a random message
+    $randMessage = Get-Random -InputObject $teaseMessages
+    $teaseLine = "case-reveal | case-reveal-stats"
+    
+    Write-Host "${randMessage}${teaseLine}"
   }
 
   function global:case-reveal {
@@ -45,14 +46,14 @@ if (-not $global:CMD_CASE_OPEN_HOOKS_READY) {
     $global:CMD_CASE_OPEN_PENDING_CMD = ""
     $global:CMD_CASE_OPEN_ACTIVE = $true
     try {
-      cmd-case-open case-open --no-anim --text $cmdText
+      cmd-case-open case-open --text $cmdText
     } finally {
       $global:CMD_CASE_OPEN_ACTIVE = $false
     }
   }
 
   function global:case-reveal-stats {
-    case-reveal stats
+    cmd-case-open inventory-stats
   }
 
   function global:prompt {

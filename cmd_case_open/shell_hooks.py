@@ -43,26 +43,16 @@ def _reload_shell(shell: str, profile_path: Path) -> None:
     if shell == "zsh":
         if shutil.which("zsh"):
             quoted = shlex.quote(str(profile_path))
-            subprocess.run(
-                ["zsh", "-ic", f"source {quoted}"],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                check=False,
-            )
+            try:
+                subprocess.run(
+                    ["zsh", "-ic", f"source {quoted}"],
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
+                    check=False,
+                )
+            except Exception as e:
+                print("Error reloading profile:", e)
         return
-
-    if shell == "powershell":
-        ps_bin = shutil.which("pwsh") or shutil.which("powershell")
-        if ps_bin:
-            ps_path = str(profile_path).replace("'", "''")
-            subprocess.run(
-                [ps_bin, "-NoProfile", "-Command", f". '{ps_path}'"],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                check=False,
-            )
-        return
-
     raise ValueError(f"Unsupported shell: {shell}")
 
 
@@ -84,23 +74,17 @@ def _detect_shell() -> str:
 
 
 def _powershell_profile_path() -> Path:
-    pwsh = shutil.which("pwsh")
-    if pwsh:
-        try:
-            result = subprocess.run(
-                [pwsh, "-NoProfile", "-Command", "$PROFILE"],
-                capture_output=True,
-                text=True,
-                check=True,
-            )
-            candidate = result.stdout.strip()
-            if candidate:
-                return Path(candidate)
-        except subprocess.SubprocessError:
-            pass
-
-    documents = Path.home() / "Documents" / "PowerShell"
-    return documents / "Microsoft.PowerShell_profile.ps1"
+    path_to_profile = ""
+    try:
+        result = subprocess.run(
+            ["powershell.exe", "-Command", "$PROFILE"],
+            capture_output=True,
+        )
+        path_to_profile = result.stdout.strip()
+    except Exception as e:
+        print("profile_error",e)
+        pass
+    return Path(path_to_profile.decode("utf-8"))
 
 
 def _install_hooks_for_shell(shell: str) -> None:
@@ -115,20 +99,22 @@ def _install_hooks_for_shell(shell: str) -> None:
 
     if shell == "powershell":
         profile_path = _powershell_profile_path()
-        changed = _write_profile(profile_path, _read_script("hooks.powershell.ps1"))
-        if changed:
-            _reload_shell(shell, profile_path)
-            _print_restart_notice(shell, profile_path)
-        else:
-            print("cmd-case-open previously installed.")
+        try:
+            changed = _write_profile(profile_path, _read_script("hooks.powershell.ps1"))
+            if changed:
+                _print_restart_notice(shell, profile_path)
+            else:
+                print("cmd-case-open previously installed.")
+        except Exception as e:
+            print("Profile write erorr:",e)
         return
-
     raise ValueError(f"Unsupported shell: {shell}")
 
 
 def install_hooks() -> None:
     try:
         _install_hooks_for_shell(_detect_shell())
-    except Exception:
+    except Exception as e:
+        print(e)
         # Never block normal CLI usage on hook installation failures.
         pass

@@ -28,4 +28,12 @@ TTE_EFFECT_POOL = (
     "beams",
 )
 
+TTE_EFFECT_POOL_WINDOWS = (
+    "decrypt",
+    "middleout",
+    "wipe",
+    "slice",
+)
+
+
 ANSI_PATTERN = re.compile(r"\x1b\[[0-9;]*m")

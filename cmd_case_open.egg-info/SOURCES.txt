@@ -3,7 +3,6 @@ pyproject.toml
 ./cmd_case_open/__init__.py
 ./cmd_case_open/inventory.py
 ./cmd_case_open/shell_hooks.py
-./cmd_case_open/shell_hooks_runtime.py
 ./cmd_case_open/core/__init__.py
 ./cmd_case_open/core/constants.py
 ./cmd_case_open/core/rendering.py
@@ -22,7 +21,6 @@ pyproject.toml
 cmd_case_open/__init__.py
 cmd_case_open/inventory.py
 cmd_case_open/shell_hooks.py
-cmd_case_open/shell_hooks_runtime.py
 cmd_case_open.egg-info/PKG-INFO
 cmd_case_open.egg-info/SOURCES.txt
 cmd_case_open.egg-info/dependency_links.txt
