@@ -29,10 +29,10 @@ TTE_EFFECT_POOL = (
 )
 
 TTE_EFFECT_POOL_WINDOWS = (
-    "decrypt",
     "middleout",
     "wipe",
     "slice",
+    "burn",
 )
 
 

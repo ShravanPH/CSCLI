@@ -1,6 +1,6 @@
 # cmd_case_open
 
-CLI for terminal case-opening experiments.
+CLI for Counter Strike style case openings. 
 
 ## Quick start
 
@@ -9,16 +9,19 @@ cd cmd_case_open
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
-cmd-case-open --help
 ```
 
+Open a new terminal after your shell requires you and run the following when triggered:
+
+```bash
+case-reveal 
+case-reveal-stats # Track your stats
+```
 ## Commands
 
 ```bash
-cmd-case-open case-open --text "git status"
-cmd-case-open case-open --text "npm test" --no-anim
-cmd-case-open inventory-stats
-cmd-case-open install-shell-hooks --shell auto
+cmd-case-open case-open 
+cmd-case-open inventory-stats # Track your stats
 ```
 
 ## Storage
@@ -30,29 +33,9 @@ Inventory entries are appended to:
 
 Each entry stores timestamp, name, rarity, rarity key, and a colorized rarity snapshot.
 
-Shell hooks are auto-installed on first CLI run when possible.
-Set `CMD_CASE_OPEN_AUTO_HOOKS=0` to opt out.
+Shell hooks are auto-installed on first CLI run when possible depending on shell version.
 
-## Package layout
+Supported shell: 
+   1. Zsh 
+   2. Powershell
 
-```text
-cmd_case_open/
-  __init__.py
-  CSCLI/
-    __main__.py
-    CSCLI.py
-    parser.py
-    handlers.py
-  core/
-    constants.py
-    utils.py
-    rendering.py
-  domain/
-    case_catalog.py
-  scripts/
-    hooks.zsh
-    hooks.powershell.ps1
-  inventory.py
-  data/
-    spectrum-case.json
-```
