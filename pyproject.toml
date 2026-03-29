@@ -8,8 +8,10 @@ version = "0.1.0"
 description = "CLI for terminal case opening experiments"
 readme = "README.md"
 requires-python = ">=3.10"
-authors = [{ name = "Shravan" }]
+authors = [{ name = "ShravanPH", email = "shravan_ph@yahoo.com"}]
 dependencies = ["terminaltexteffects>=0.11"]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
 
 [project.scripts]
 cmd-case-open = "cmd_case_open.src.CSCLI:main"

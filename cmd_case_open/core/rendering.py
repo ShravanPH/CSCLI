@@ -40,11 +40,13 @@ def run_random_tte(display_block: str, timeout_seconds: float = 120.0) -> bool:
     frameRate = ""
     selected_effect = ""
     if os.name == "nt":
-        frameRate = "60"
+        frameRate = "240"
         selected_effect = random.choice(TTE_EFFECT_POOL_WINDOWS)
     else:
-        frameRate = "30"
+        frameRate = "0"
         selected_effect = random.choice(TTE_EFFECT_POOL)
+    print(f"framechangin",frameRate)
+    
     command = [
         "tte",
         "--frame-rate",

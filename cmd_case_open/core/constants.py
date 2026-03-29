@@ -32,7 +32,6 @@ TTE_EFFECT_POOL_WINDOWS = (
     "middleout",
     "wipe",
     "slice",
-    "burn",
 )
 
 

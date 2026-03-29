@@ -1,3 +1,19 @@
 # Ignore Python bytecode folders and files
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+
+build/
+dist/
+*.eng-info/
+.eggs/
+pip-wheel-metadata/
+
+.venv/
+venv/
+env/
+
+.pytest_cache/
+.mypy_cache/
+
+.DS_Store
