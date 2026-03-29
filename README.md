@@ -5,13 +5,12 @@ CLI for Counter Strike style case openings.
 ## Quick start
 
 ```bash
-cd cmd_case_open
-python3 -m venv .venv
-source .venv/bin/activate
+cd CSCLI
 pip install -e .
+cmd-case-open
 ```
 
-Open a new terminal after your shell requires you and run the following when triggered:
+Open a new terminal after your shell requires you to and run the following when after any terminal input:
 
 ```bash
 case-reveal 

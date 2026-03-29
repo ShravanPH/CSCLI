@@ -53,7 +53,6 @@ def _reload_shell(shell: str, profile_path: Path) -> None:
             except Exception as e:
                 print("Error reloading profile:", e)
         return
-    raise ValueError(f"Unsupported shell: {shell}")
 
 
 def _print_restart_notice(shell: str, profile_path: Path) -> None:
@@ -96,6 +95,7 @@ def _install_hooks_for_shell(shell: str) -> None:
             _print_restart_notice(shell, profile_path)
         else:
             print("cmd-case-open previously installed.")
+        return
 
     if shell == "powershell":
         profile_path = _powershell_profile_path()
@@ -108,7 +108,6 @@ def _install_hooks_for_shell(shell: str) -> None:
         except Exception as e:
             print("Profile write erorr:",e)
         return
-    raise ValueError(f"Unsupported shell: {shell}")
 
 
 def install_hooks() -> None:
