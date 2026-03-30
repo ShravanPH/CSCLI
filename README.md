@@ -29,7 +29,7 @@ You can install `cmd_case_open` in two ways:
 ### Option 1: Install via pip (Recommended)
 
 ```bash
-pip install <project-link>
+pip install cmd-case-open
 ````
 
 Then initialize the CLI:
