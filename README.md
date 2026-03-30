@@ -6,11 +6,7 @@ Open cases, reveal randomized items with rarity tiers, and track your inventory 
 
 ## Demo
 
- <!-- ![Demo GIF](cmd_case_open/assets/demo.mp4) -->
- <video autoplay loop muted width="800" height="600" >
-  <source src="cmd_case_open\assets\demo.mp4" type="video/mp4">
-</video>
-
+ ![Demo GIF](cmd_case_open/assets/demo.gif)
 
 ---
 
