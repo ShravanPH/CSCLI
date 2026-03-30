@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+cmd_case_open.egg-info
 build/
 dist/
 *.eng-info/
